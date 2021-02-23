@@ -18,7 +18,7 @@ export default class Card extends React.Component {
                     <Text style={styles.title}>
                         Star Wars VIII - Les derniers Jedi
                     </Text>
-                    <Text tyle={styles.date}>
+                    <Text style={styles.date}>
                         2017-12-13
                     </Text>
                 </View>
@@ -29,7 +29,7 @@ export default class Card extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
-        flex: 0.1,
+        flex: 1,
         marginTop: 30,
         flexDirection: 'row',
     },
@@ -38,14 +38,17 @@ const styles = StyleSheet.create({
         height: 100,
     },
     text : {
-        justifyContent: 'center',
+        flex: 1,
+        height: 100,
     },
     title : {
-        fontSize : 15,
-        fontWeight: 'bold',
+        flex: 1,
+        fontSize : 18,
+        fontWeight: '700',
     },
     date : {
-        fontSize : 15,
+        flex: 1,
+        fontSize : 18,
         color: 'grey',
     }
 });
