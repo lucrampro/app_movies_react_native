@@ -1,12 +1,14 @@
 import React from 'react';
-import {TextInput, View, StyleSheet, Button} from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {TextInput, View, StyleSheet} from "react-native";
 
 export default class Search extends React.Component {
     render() {
         return (
             <View style={styles.main_container}>
-                <TextInput style={styles.textinput} placeholder='Titre du film'/>
-                <Button title='Rechercher' onPress={() => {}}/>
+                <TextInput style={styles.textinput} leftIcon={
+                    <Icon name='user' size={24} color='black'/>
+                } placeholder='Titre du film'/>
             </View>
         )
     }
@@ -21,8 +23,8 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         marginRight: 5,
         height: 50,
-        borderColor: '#000000',
-        borderWidth: 1,
-        paddingLeft: 5
+        paddingLeft: 20,
+        backgroundColor: '#fff',
+        borderRadius: 17
     }
 })
