@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from "./src/components/Search";
 import { SafeAreaView, View, StyleSheet, ListView } from 'react-native';
+import Card from './src/components/Card';
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
         <Search />
       </View>
         <View style={Styles.bottom}>
-
+          <Card/>
         </View>
     </View>
   );
