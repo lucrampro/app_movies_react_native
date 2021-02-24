@@ -1,4 +1,5 @@
-export default data = [
+// export default data = [
+var data = [
   {
     id: 181808,
     vote_average: 7.2,
@@ -70,3 +71,4 @@ export default data = [
     release_date: "1977-05-25",
   },
 ];
+module.exports = data;

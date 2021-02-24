@@ -1,33 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, SafeAreaView } from "react-native";
 import Search from "./src/components/Search";
 import ListResults from "./src/components/ListResult";
 import data from "./src/helpers/filmDatas";
-
+import Network from './Network'
 export default function App() {
-  const [searchText, setSearchText] = useState("mon Text");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [movies, setMovies] = useState(data);
-  const [totalPages, setTotalPages] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [search_text, setsearch_text] = useState("");
+  const [current_page, setcurrent_page] = useState(1);
+  const [movies, setMovies] = useState([]);
+  const [total_pages, settotal_pages] = useState(0);
+  const [is_loading, setis_loading] = useState(false);
+  
 
   const getSearchMovies = (searchedText) => {
-    console.log(searchedText);
-    const newMovies = data.filter((movie) =>
-      movie.title.toLowerCase().includes(searchedText.toLowerCase())
-    );
-    setMovies(newMovies);
+    setsearch_text(searchedText);
+    Network.getMovies(search_text, current_page, setMovies);
   };
+  // SCRIPT
+  useEffect(()=> {
+    console.error(Network)
+    Network.getMovies(search_text, current_page, setMovies);
+  },[]);
+  // TEMPLATE
   return (
     <>
       <Search
-        searchText={searchText}
+        search_text={search_text}
         onSearch={(searchedText) => getSearchMovies(searchedText)}
       />
       <ListResults
-        isLoading={isLoading}
+        is_loading={is_loading}
         movies={movies}
-        searchedText={searchText}
+        searchedText={search_text}
       />
     </>
   );

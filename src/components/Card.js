@@ -9,7 +9,7 @@ import {
   TouchableHighlight,
 } from "react-native";
 
-export const Card = ({ movieTitle, releaseDate }) => {
+export const Card = ({ movieTitle, releaseDate, movie_image }) => {
   return (
     <TouchableHighlight
       activeOpacity={0.6}
@@ -18,14 +18,13 @@ export const Card = ({ movieTitle, releaseDate }) => {
     >
       <View style={styles.main_container}>
         <View style={styles.image}>
-          <Image
+          {movie_image ? <Image
             resizeMode="contain"
             source={{
-              uri:
-                "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg",
+              uri: `https://image.tmdb.org/t/p/w500/${movie_image}`,
             }}
             style={styles.movie}
-          ></Image>
+          ></Image> : null}
         </View>
         <View style={styles.description}>
           <Text style={styles.text_title}>{movieTitle}</Text>

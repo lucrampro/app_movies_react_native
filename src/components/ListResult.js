@@ -30,6 +30,7 @@ export default class ListResults extends React.Component {
                 key={key}
                 movieTitle={movies.item.title}
                 releaseDate={movies.item.release_date}
+                movie_image={movies.item.poster_path}
               />
             )}
           />
