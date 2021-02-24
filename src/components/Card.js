@@ -40,14 +40,14 @@ const styles = StyleSheet.create({
     text : {
         flex: 1,
         height: 100,
+        flexDirection: 'column',
+        justifyContent: 'center',
     },
     title : {
-        flex: 1,
         fontSize : 18,
         fontWeight: '700',
     },
     date : {
-        flex: 1,
         fontSize : 18,
         color: 'grey',
     }
