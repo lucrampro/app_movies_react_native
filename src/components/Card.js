@@ -1,54 +1,67 @@
-import React from 'react'
-import { View, Image, Text, StyleSheet } from 'react-native'
+import React from "react";
+import {
+  TextInput,
+  View,
+  StyleSheet,
+  Button,
+  Image,
+  Text,
+  TouchableHighlight,
+} from "react-native";
 
-export default class Card extends React.Component {
-    render() {
-        return (
-            <View style={styles.main_container}>
-                <View>
-                <Image
-                resizeMode= 'contain'
-                    style={styles.tinyLogo}
-                    source={{
-                    uri: 'https://fr.web.img6.acsta.net/pictures/17/10/10/04/58/2061488.jpg'
-                    }}
-                />
-                </View>
-                <View style={styles.text}>
-                    <Text style={styles.title}>
-                        Star Wars VIII - Les derniers Jedi
-                    </Text>
-                    <Text style={styles.date}>
-                        2017-12-13
-                    </Text>
-                </View>
-            </View>
-        )
-    }
-}
+export const Card = ({ movieTitle, releaseDate }) => {
+  return (
+    <TouchableHighlight
+      activeOpacity={0.6}
+      underlayColor="#FC5C04"
+      onPress={() => alert("Pressed!")}
+    >
+      <View style={styles.main_container}>
+        <View style={styles.image}>
+          <Image
+            resizeMode="contain"
+            source={{
+              uri:
+                "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg",
+            }}
+            style={styles.movie}
+          ></Image>
+        </View>
+        <View style={styles.description}>
+          <Text style={styles.text_title}>{movieTitle}</Text>
+          <Text style={styles.text_date}>{releaseDate}</Text>
+        </View>
+      </View>
+    </TouchableHighlight>
+  );
+};
 
 const styles = StyleSheet.create({
-    main_container: {
-        flex: 1,
-        marginTop: 30,
-        flexDirection: 'row',
-    },
-    tinyLogo : {
-        width: 100,
-        height: 100,
-    },
-    text : {
-        flex: 1,
-        height: 100,
-        flexDirection: 'column',
-        justifyContent: 'center',
-    },
-    title : {
-        fontSize : 18,
-        fontWeight: '700',
-    },
-    date : {
-        fontSize : 18,
-        color: 'grey',
-    }
+  main_container: {
+    flexDirection: "row",
+    height: 155,
+    paddingVertical: 10,
+  },
+  image: {
+    width: 100,
+    marginRight: 10,
+  },
+  description: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  movie: {
+    flex: 1,
+  },
+  text_title: {
+    fontWeight: "bold",
+    fontSize: 18,
+    marginVertical: 10,
+  },
+  text_date: {
+    fontWeight: "300",
+    color: "grey",
+    fontSize: 18,
+  },
 });

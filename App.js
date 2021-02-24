@@ -1,36 +1,34 @@
-import React from 'react';
+import React, { useState } from "react";
+import { StyleSheet, Text, SafeAreaView } from "react-native";
 import Search from "./src/components/Search";
-import { SafeAreaView, View, StyleSheet, ListView } from 'react-native';
-import Card from './src/components/Card';
+import ListResults from "./src/components/ListResult";
+import data from "./src/helpers/filmDatas";
 
 export default function App() {
+  const [searchText, setSearchText] = useState("mon Text");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [movies, setMovies] = useState(data);
+  const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getSearchMovies = (searchedText) => {
+    console.log(searchedText);
+    const newMovies = data.filter((movie) =>
+      movie.title.toLowerCase().includes(searchedText.toLowerCase())
+    );
+    setMovies(newMovies);
+  };
   return (
-    <View style={Styles.body}>
-      <View style={Styles.header}>
-        <Search />
-      </View>
-        <View style={Styles.bottom}>
-          <Card/>
-        </View>
-    </View>
+    <>
+      <Search
+        searchText={searchText}
+        onSearch={(searchedText) => getSearchMovies(searchedText)}
+      />
+      <ListResults
+        isLoading={isLoading}
+        movies={movies}
+        searchedText={searchText}
+      />
+    </>
   );
 }
-const padding_number = 15;
-
-const Styles = StyleSheet.create({
-  body: {
-    flex: 1,
-  },
-  header: {
-    backgroundColor: '#FC634E',
-    flex: 1,
-    paddingLeft: padding_number,
-    paddingRight: padding_number,
-    paddingTop: 30,
-    borderRadius: 15,
-  },
-  bottom: {
-    flex: 7,
-    backgroundColor: '#fff'
-  }
-})
