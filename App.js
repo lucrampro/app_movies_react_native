@@ -20,7 +20,14 @@ export default function App() {
   useEffect(()=> {
     console.error(Network)
     Network.getMovies(search_text, current_page, setMovies);
-  },[]);
+    console.log("ici", current_page )
+  }, [ current_page ] );
+
+  function updatePage ( ) {
+    setcurrent_page(current_page + 1)
+    console.log("updatePage" )
+  }
+
   // TEMPLATE
   return (
     <>
@@ -32,6 +39,7 @@ export default function App() {
         is_loading={is_loading}
         movies={movies}
         searchedText={search_text}
+        updatePage={updatePage}
       />
     </>
   );

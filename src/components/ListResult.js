@@ -12,11 +12,13 @@ import { data } from "../helpers/filmDatas";
 
 export default class ListResults extends React.Component {
   render() {
-    const { movies } = this.props;
+    const { movies, updatePage } = this.props;
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
           <FlatList
+            onEndReachedThreshold={0.6}
+            onEndReached={updatePage}
             ItemSeparatorComponent={({ highlighted }) => (
               <View
                 style={[styles.separator, highlighted && { marginLeft: 0 }]}
