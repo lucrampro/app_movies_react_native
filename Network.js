@@ -5,10 +5,10 @@ class Network {
     this.API_key = '026890b0945cbc402813edbeb90f0223'
   }
 
-  getMovies = (search_text, current_page, setMovies) => {
-    const query = `&query=${ search_text && search_text.length >= 3 ? search_text : null}&page=${current_page}`
+  async getMovies (search_text, current_page, setMovies) {
+    const query = `&query=${ search_text && search_text.length >= 1 ? search_text : null}&page=${current_page}`
     // API KEY: 026890b0945cbc402813edbeb90f0223
-    fetch(`${this.API_link}/search/movie?api_key=${this.API_key + query}`,{
+    await fetch(`${this.API_link}/search/movie?api_key=${this.API_key + query}`,{
       method: 'GET',
     })
       .then((result) => {
