@@ -3,7 +3,7 @@ import { StyleSheet, Text, SafeAreaView } from "react-native";
 import Search from "./src/components/Search";
 import ListResults from "./src/components/ListResult";
 import data from "./src/helpers/filmDatas";
-import Network from './Network'
+import {getMovies} from './Network'
 export default function App() {
   const [search_text, setsearch_text] = useState("");
   const [current_page, setcurrent_page] = useState(1);
@@ -14,18 +14,23 @@ export default function App() {
 
   const getSearchMovies = (searchedText) => {
     setsearch_text(searchedText);
-    Network.getMovies(search_text, current_page, setMovies);
+    getMovies(search_text, current_page).then(response => {
+      setMovies([...movies, ...response.results]);
+      console.log(response);
+    })
   };
   // SCRIPT
   useEffect(()=> {
-    console.error(Network)
-    Network.getMovies(search_text, current_page, setMovies);
+    getMovies(search_text, current_page).then(response => {
+      setMovies([...movies, ...response.results]);
+      console.log(response);
+    })
     console.log("ici", current_page )
   }, [ current_page ] );
 
-  function updatePage ( ) {
+  function updatePage () {
     setcurrent_page(current_page + 1)
-    console.log("updatePage" )
+    console.log("updatePage")
   }
 
   // TEMPLATE
