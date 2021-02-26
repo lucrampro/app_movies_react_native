@@ -6,6 +6,7 @@ export default class Search extends React.Component {
   render() {
     const { onSearch } = this.props;
     return (
+      
       <View style={styles.main_container}>
         <View style={styles.search_content}>
           {/* <Image
