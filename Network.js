@@ -32,4 +32,18 @@
     }
   };
 
+  export const getDetailsMovies = async (movie_id) => {
+    // const query = `&query=${ search_text && search_text.length >= 1 ? search_text : null}&page=${current_page}`
+    // API KEY: 026890b0945cbc402813edbeb90f0223
+
+    try {
+      const response = await fetch(`${API_link}/movie/${movie_id}?api_key=${API_key}`,{
+        method: 'GET',
+      })
+      return await response.json()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 

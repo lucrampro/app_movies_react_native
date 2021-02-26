@@ -12,7 +12,7 @@ import { data } from "../helpers/filmDatas";
 
 export default class ListResults extends React.Component {
   render() {
-    const { movies, updatePage } = this.props;
+    const { movies, updatePage, navigation } = this.props;
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
@@ -27,12 +27,14 @@ export default class ListResults extends React.Component {
             style={{ flex: 1 }}
             data={movies}
             keyExtractor={(key) => String(key.id) + Math.random()}
-            renderItem={(movies, key) => (
+            renderItem={(movie, key) => (
               <Card
                 key={key}
-                movieTitle={movies.item.title}
-                releaseDate={movies.item.release_date}
-                movie_image={movies.item.poster_path}
+                movieTitle={movie.item.title}
+                releaseDate={movie.item.release_date}
+                movie_image={movie.item.poster_path}
+                navigation={navigation}
+                movie_id={movie.item.id}
               />
             )}
           />

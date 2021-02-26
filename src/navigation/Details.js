@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image, View, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Icon } from "react-native-elements";
+import { getDetailsMovies } from "../../Network";
 
-export default function Details() {
+export default function Details({navigation, route}) {
+    const [informationMovie, setInformationMovie] = useState({});
+    useEffect(() => {
+        getDetailsMovies(route.params.id).then( response => {
+            setInformationMovie(response)
+        })
+    }, [])
     return (
         <View>
             <View>
@@ -16,7 +23,7 @@ export default function Details() {
 
                     </Image>
                     <Text>
-                        aaaaaa
+                        {informationMovie.title}
                     </Text>
                     <Text>
 

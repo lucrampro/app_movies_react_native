@@ -10,12 +10,15 @@ import {
 } from "react-native";
 import Details from "../navigation/Details";
 
-export const Card = ({ movieTitle, releaseDate, movie_image, navigation } ) => {
+
+export const Card = ({ movieTitle, releaseDate, movie_image, navigation, movie_id } ) => {
   return (
     <TouchableHighlight
       activeOpacity={0.6}
       underlayColor="#FC5C04"
-      onPress={() => navigation.navigate(Details)}
+      onPress={() => navigation.navigate('Details', {
+        id: movie_id
+      })}
     >
       <View style={styles.main_container}>
         <View style={styles.image}>
