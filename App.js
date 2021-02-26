@@ -21,6 +21,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Text } from 'react-native';
 import { Details } from './src/navigation/Details';
 import { MainNavigation } from './src/navigation/MainNavigation';
+import ListResults from './src/components/ListResult';
 
 const Stack = createStackNavigator();
 

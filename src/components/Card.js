@@ -8,13 +8,14 @@ import {
   Text,
   TouchableHighlight,
 } from "react-native";
+import Details from "../navigation/Details";
 
-export const Card = ({ movieTitle, releaseDate, movie_image }) => {
+export const Card = ({ movieTitle, releaseDate, movie_image, navigation } ) => {
   return (
     <TouchableHighlight
       activeOpacity={0.6}
       underlayColor="#FC5C04"
-      onPress={() => alert("Pressed!")}
+      onPress={() => navigation.navigate(Details)}
     >
       <View style={styles.main_container}>
         <View style={styles.image}>

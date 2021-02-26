@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, SafeAreaView } from "react-native";
-import Search from "./src/components/Search";
-import ListResults from "./src/components/ListResult";
-import data from "./src/helpers/filmDatas";
-import {getMovies} from './Network'
+import Search from "../components/Search";
+import ListResults from "../components/ListResult";
+import data from "../helpers/filmDatas";
+import {getMovies} from '../../Network'
 
-export default function App() {
+export default function AllMovies() {
   const [search_text, setsearch_text] = useState("");
   const [current_page, setcurrent_page] = useState(1);
   const [movies, setMovies] = useState([]);
